@@ -13,6 +13,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby-version }}
       uses: ruby/setup-ruby@v1
+      with:
+          ruby-version: ${{ ruby-matrix }}
 
     - name: Run RuboCop
       run: bundle exec rubocop --parallel
