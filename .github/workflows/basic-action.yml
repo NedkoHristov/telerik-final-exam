@@ -16,10 +16,6 @@ jobs:
       #     github_token: ${{ secrets.github_token }}
 
       - name: RuboCop Linter Action
-<<<<<<< HEAD
-=======
-      - name: RuboCop Linter Action
->>>>>>> 246d4537b2837cbd60d2ad08993e7108a5445da9
         uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
 
       - name: brakeman
