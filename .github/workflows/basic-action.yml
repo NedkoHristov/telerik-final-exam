@@ -1,7 +1,6 @@
-name: Static code analysis
-
-on: [push]
-
+# .github/workflows/linters.yml
+name: linters
+on: [pull_request]
 jobs:
   linters:
     name: runner / linters
