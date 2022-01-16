@@ -26,3 +26,7 @@ jobs:
         uses: vk26/action-fasterer@v1
         with:
           github_token: ${{ secrets.github_token }}
+      - name: Snyk.io - vulnerability scanner
+        uses: snyk/actions/ruby@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
