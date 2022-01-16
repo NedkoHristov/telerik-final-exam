@@ -12,7 +12,7 @@ port = server.addr[1]
 
 puts "Using port #{port}"
 
-while session = server.accept
+while (session = server.accept)
 
   request = session.gets
 
