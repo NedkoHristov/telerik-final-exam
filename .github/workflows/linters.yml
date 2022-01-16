@@ -8,21 +8,21 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v1
-      - name: rubocop
+      - name: rubocop - Ruby static code analyzer
         uses: andrewmcodes/rubocop-linter-action@v3.0.0.rc2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: brakeman
+      - name: brakeman - vulnerability scanning
         uses: reviewdog/action-brakeman@v1
         with:
           brakeman_version: gemfile
           github_token: ${{ secrets.github_token }}
-      - name: reek
+      - name: reek - code smell detector
         uses: reviewdog/action-reek@v1
         with:
           reek_version: gemfile
           github_token: ${{ secrets.github_token }}
-      - name: fasterer
+      - name: fasterer - suggests some speed improvements
         uses: vk26/action-fasterer@v1
         with:
           github_token: ${{ secrets.github_token }}
