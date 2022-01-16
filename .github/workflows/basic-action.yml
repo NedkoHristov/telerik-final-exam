@@ -17,6 +17,9 @@ jobs:
 
       - name: RuboCop Linter Action
         uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
+        with:
+          brakeman_version: gemfile
+          github_token: ${{ secrets.github_token }}
 
       - name: brakeman
         uses: reviewdog/action-brakeman@v1
