@@ -1,4 +1,9 @@
 FROM ruby:2.6
-COPY . /var/www/ruby
-WORKDIR /var/www/ruby
-CMD ["ruby","txc_server.rb"]
+
+WORKDIR /usr/src/app
+
+COPY . ./
+
+CMD ["ruby", "./tcp_server.rb"]
+
+EXPOSE 80/tcp
