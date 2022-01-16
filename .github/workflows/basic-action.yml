@@ -1,37 +1,14 @@
-# .github/workflows/linters.yml
-name: linters
+# .github/workflows/basic-action.yml
+name: Rubocop
+
 on: [push]
+
 jobs:
-  linters:
-    name: runner / linters
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v1
-      # - name: rubocop
-      #   uses: reviewdog/action-rubocop@v1
-      #   with:
-      #     rubocop_version: gemfile
-      #     rubocop_extensions: rubocop-rails:gemfile rubocop-rspec:gemfile
-      #     github_token: ${{ secrets.github_token }}
-
-      - name: RuboCop Linter Action
-        uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
-        with:
-          brakeman_version: gemfile
-          github_token: ${{ secrets.github_token }}
-
-      - name: brakeman
-        uses: reviewdog/action-brakeman@v1
-        with:
-          brakeman_version: gemfile
-          github_token: ${{ secrets.github_token }}
-      - name: reek
-        uses: reviewdog/action-reek@v1
-        with:
-          reek_version: gemfile
-          github_token: ${{ secrets.github_token }}
-      - name: fasterer
-        uses: vk26/action-fasterer@v1
-        with:
-          github_token: ${{ secrets.github_token }}
+    - uses: actions/checkout@v2
+    - name: Rubocop Linter Action
+      uses: andrewmcodes/rubocop-linter-action@v3.0.0.rc2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
