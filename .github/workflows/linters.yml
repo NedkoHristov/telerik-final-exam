@@ -12,10 +12,12 @@ jobs:
       uses: andrewmcodes/rubocop-linter-action@v3.0.0.rc2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   brakeman:
     runs-on: ubuntu-latest
     steps:
-    - uses: reviewdog/action-brakeman@v1
     - name: Vulnerability scanning with brakeman
+    - uses: actions/checkout@v2
+    - uses: reviewdog/action-brakeman@v1
       with:
         github_token: ${{ secrets.github_token }}
