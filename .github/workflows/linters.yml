@@ -4,7 +4,7 @@ name: Rubocop
 on: [push]
 
 jobs:
-  build:
+  rubocop:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -12,3 +12,10 @@ jobs:
       uses: andrewmcodes/rubocop-linter-action@v3.0.0.rc2
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  brakeman:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Brakeman
+      uses: devmasx/brakeman-linter-action@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
