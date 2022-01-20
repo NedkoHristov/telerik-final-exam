@@ -6,6 +6,7 @@ The repo contains three main points:
 
 1. GitHub - code itself, CI, etc
 2. docker files - will be here temporarely before being moved to the terraform part
+
 Create a docker image that runs a ruby script:
 ```
 docker build -t tcp_server .

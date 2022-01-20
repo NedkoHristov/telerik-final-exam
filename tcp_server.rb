@@ -46,7 +46,6 @@ while (session = server.accept)
 
 end
 
-
 # Smelly class
 class Smelly
   # This will reek of UncommunicativeMethodName
