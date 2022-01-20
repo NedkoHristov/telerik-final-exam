@@ -11,7 +11,7 @@ jobs:
       - name: rubocop - Ruby static code analyzer
         uses: andrewmcodes/rubocop-linter-action@v3.0.0.rc2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.github_token }}
       - name: brakeman - vulnerability scanning
         uses: reviewdog/action-brakeman@v1
         with:
