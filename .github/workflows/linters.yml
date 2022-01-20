@@ -9,9 +9,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
       - name: rubocop - Ruby static code analyzer
-        uses: andrewmcodes/rubocop-linter-action@v3.0.0.rc2
-        env:
-          github_token: ${{ secrets.github_token }}
+        uses: andrewmcodes-archive/rubocop-linter-action@v3.3.0
       - name: brakeman - vulnerability scanning
         uses: reviewdog/action-brakeman@v1
         with:
