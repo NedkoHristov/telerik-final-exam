@@ -1,11 +1,3 @@
-# ####
-
-# Current Available Datacenter Regions
-
-# As of 28-05-2017
-
-#
-
 variable "do_fra1" {
   description = "Digital Ocean Frankfurt Data Center 1"
   default     = "fra1"
@@ -18,8 +10,8 @@ variable "ubuntu" {
   default     = "ubuntu-20-04-x64"
 }
 
-variable "ssh_key_path" {
-  type        = string
-  description = "The file path to an ssh public key"
-  default     = "~/.ssh/id_rsa.pub"
-}
+#variable "ssh_key_path" {
+#  type        = string
+#  description = "The file path to an ssh public key"
+#  default     = "~/.ssh/id_rsa.pub"
+#}
