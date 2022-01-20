@@ -24,16 +24,16 @@ resource "digitalocean_droplet" "mywebserver" {
   name               = "telerik-ruby"
   user_data          = file("cloudinit.conf")
 
-  connection {
-      host     = self.ipv4_address
-      type     = "ssh"
-      private_key = file("~/.ssh/id_rsa")
-      user     = "root"
-      timeout  = "2m"
-    }
+#  connection {
+#      host     = self.ipv4_address
+#      type     = "ssh"
+#      private_key = file("~/.ssh/id_rsa")
+#      user     = "root"
+#      timeout  = "2m"
+#    }
 }
 
-resource "digitalocean_ssh_key" "example" {
-  name       = "examplekey"
-  public_key = file(var.ssh_key_path)
-}
+#resource "digitalocean_ssh_key" "example" {
+#  name       = "examplekey"
+#  public_key = file(var.ssh_key_path)
+#}
