@@ -20,3 +20,8 @@ Room for improvement:
 * Implementing volume may be a good idea for the demo purpose, because creating and uploading docker images may take some time
 
 3. terraform to create the infrastructure
+* Prerequisites to run terraform:
+You need to export you DigitalOcean API Token as an environment variable
+```
+export DIGITALOCEAN_TOKEN="Put Your Token Here"
+```
