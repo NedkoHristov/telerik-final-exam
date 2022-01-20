@@ -1,0 +1,35 @@
+# .github/workflows/linters.yml
+name: linters
+on: [push]
+jobs:
+  linters:
+    name: runner / linters
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+#      - name: Run rubocop with reviewdog
+#        uses: reviewdog/action-rubocop@v1.9.0
+#        with:
+#          # GITHUB_TOKEN
+#          github_token: ${{ secrets.github_token }}
+    
+      - name: brakeman - vulnerability scanning
+        uses: reviewdog/action-brakeman@v1
+        with:
+          brakeman_version: gemfile
+          github_token: ${{ secrets.github_token }}
+      - name: reek - code smell detector
+        uses: reviewdog/action-reek@v1
+        with:
+          reek_version: gemfile
+          github_token: ${{ secrets.github_token }}
+      - name: fasterer - suggests some speed improvements
+        uses: vk26/action-fasterer@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+      - name: Snyk.io - vulnerability scanner
+        uses: snyk/actions/ruby@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
