@@ -1,9 +1,9 @@
-# http_server.rb
+# frozen_string_literal: true
 
 require 'socket'
 
 app = proc do
-  ['200', { 'Content-Type' => 'text/html' }, ["Hello world."]]
+  ['200', { 'Content-Type' => 'text/html' }, ['Hello world.']]
 end
 
 server = TCPServer.new 80
@@ -12,7 +12,7 @@ port = server.addr[1]
 
 puts "Using port #{port}"
 
-while session = server.accept
+while (session = server.accept)
 
   request = session.gets
 
