@@ -1,6 +1,6 @@
 # .github/workflows/linters.yml
 name: linters
-on: [push]
+on: [pull_request]
 jobs:
   linters:
     name: runner / linters
@@ -13,6 +13,8 @@ jobs:
 #        with:
 #          # GITHUB_TOKEN
 #          github_token: ${{ secrets.github_token }}
+      - name: HashiCorp - Setup Terraform
+        uses: hashicorp/setup-terraform@v1.2.1
       - name: brakeman - vulnerability scanning
         uses: reviewdog/action-brakeman@v1
         with:
