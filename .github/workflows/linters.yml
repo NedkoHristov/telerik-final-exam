@@ -1,6 +1,6 @@
 # .github/workflows/linters.yml
 name: linters
-on: [push]
+on: [pull_request]
 jobs:
   linters:
     name: runner / linters
