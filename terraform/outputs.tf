@@ -1,3 +1,3 @@
 output "IPv4" {
-  value = digitalocean_droplet.mywebserver.ipv4_address
+  value = digitalocean_droplet.telerik-ruby.ipv4_address
 }
