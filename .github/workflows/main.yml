@@ -11,7 +11,8 @@ jobs:
       - name: Run rubocop with reviewdog
         uses: andrewmcodes/rubocop-linter-action@v3.3.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          exit_on_failure: true
+          github_token: ${{ secrets.github_token }}
 
   vulnerability-scanners:
     needs: linters
