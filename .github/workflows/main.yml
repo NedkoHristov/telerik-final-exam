@@ -8,11 +8,7 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v1
-      - name: Run rubocop with reviewdog
-        # uses: andrewmcodes/rubocop-linter-action@v3.3.0
-        # with:
-        #   exit_on_failure: true
-        #   github_token: ${{ secrets.github_token }}
+      - name: Run rubocop
         uses: luizfonseca/github-actions-rubocop@1.5.6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -31,6 +27,15 @@ jobs:
         uses: snyk/actions/ruby@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: SonarCloud -vulnerability scanner
+
+      # - uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   ci-to-dockerhub:
     needs: vulnerability-scanners
