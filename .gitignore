@@ -1,5 +1,3 @@
-# Shamelessly stolen from github/gitignore project
-
 # Local .terraform directories
 **/.terraform/*
 
