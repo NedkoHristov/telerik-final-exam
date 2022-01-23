@@ -1,0 +1,28 @@
+#cloud-config
+groups:
+  - ubuntu: [root,sys]
+  - hashicorp
+
+# Add users to the system. Users are added after groups are added.
+users:
+  - default
+  - name: terraform
+    gecos: terraform
+    shell: /bin/bash
+    primary_group: hashicorp
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    lock_passwd: false
+    ssh_authorized_keys:
+      - # Paste your created SSH key here
+
+runcmd:
+  - sudo apt-get update
+  - sudo apt-get -y install git unzip ruby
+  - sudo apt-get remove docker docker-engine docker.io
+  - sudo apt install -y docker.io
+  - sudo systemctl start docker
+  - sudo systemctl enable docker
+  - sudo chmod 666 /var/run/docker.sock
+  - docker run --rm -p 80:80 nedko/tcp_server:latest
+  - docker pull nedko/tcp_server:latest
