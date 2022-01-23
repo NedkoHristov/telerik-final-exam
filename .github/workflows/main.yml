@@ -29,25 +29,13 @@ jobs:
       #   env:
       #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-      # - name: SonarCloud -vulnerability scanner
-      # # - uses: actions/checkout@v2
-      # #   with:
-      # #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      #   uses: SonarSource/sonarcloud-github-action@master
-      # - uses: actions/checkout@v2
-      #   with:
-      #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      #     projectBaseDir: ./
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
   SAST:
+    needs: vulnerability-scanners
+    name: Static application security testing
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
@@ -88,3 +76,16 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+  notifications:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SSH_SLACK_WEBHOOK }}
+        SLACK_CHANNEL: telerik-upskill-devops
+        SLACK_USERNAME: shitBot
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_FOOTER: "You better not know who wrote this :D"
