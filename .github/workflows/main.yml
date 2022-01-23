@@ -1,4 +1,4 @@
-# .github/workflows/linters.yml
+# .github/workflows/main.yml
 name: linters
 on: [push]
 jobs:
