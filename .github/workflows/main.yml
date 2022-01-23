@@ -9,10 +9,13 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
       - name: Run rubocop with reviewdog
-        uses: andrewmcodes/rubocop-linter-action@v3.3.0
-        with:
-          exit_on_failure: true
-          github_token: ${{ secrets.github_token }}
+        # uses: andrewmcodes/rubocop-linter-action@v3.3.0
+        # with:
+        #   exit_on_failure: true
+        #   github_token: ${{ secrets.github_token }}
+        uses: luizfonseca/github-actions-rubocop@1.5.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   vulnerability-scanners:
     needs: linters
