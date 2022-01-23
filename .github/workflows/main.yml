@@ -8,19 +8,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v1
-#      - name: Run rubocop with reviewdog
-#        uses: reviewdog/action-rubocop@v1.9.0
-#        with:
-#          # GITHUB_TOKEN
-#          github_token: ${{ secrets.github_token }}
-      - name: reek - code smell detector
-#        uses: reviewdog/action-reek@v1
-        uses: moneyforward/reek-action@v0
-        with:
-          reporter: github-check
-
-      - name: fasterer - suggests some speed improvements
-        uses: vk26/action-fasterer@v1
+      - name: Run rubocop with reviewdog
+        uses: reviewdog/action-rubocop@v1.9.0
         with:
           github_token: ${{ secrets.github_token }}
 
@@ -29,8 +18,6 @@ jobs:
     name: Vulnerability scanners
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v1
       - name: brakeman - vulnerability scanning
         uses: reviewdog/action-brakeman@v1
         with:
@@ -40,7 +27,7 @@ jobs:
         uses: snyk/actions/ruby@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          reporter: github-check
+
   ci-to-dockerhub:
     needs: vulnerability-scanners
     runs-on: ubuntu-latest
