@@ -43,8 +43,22 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
+  notifications: #Placed here, because all tests has been already done, no need to wait anymore
+    needs: SAST
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SSH_SLACK_WEBHOOK }}
+        SLACK_CHANNEL: telerik-upskill-devops
+        SLACK_USERNAME: telerikBot
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_FOOTER: "Telerik's DevOps Upskill challenge"
+
   ci-to-dockerhub:
-    needs: vulnerability-scanners
+    needs: SAST
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -76,16 +90,3 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
-
-  notifications:
-    needs: ci-to-dockerhub
-    runs-on: ubuntu-latest
-    steps:
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SSH_SLACK_WEBHOOK }}
-        SLACK_CHANNEL: telerik-upskill-devops
-        SLACK_USERNAME: telerikBot
-        SLACK_COLOR: ${{ job.status }}
-        SLACK_FOOTER: "Telerik's DevOps Upskill challenge"
