@@ -28,6 +28,8 @@ jobs:
     name: Vulnerability scanners
     runs-on: ubuntu-latest
     steps:
+      - name: Check out code
+        uses: actions/checkout@v1
       - name: brakeman - vulnerability scanning
         uses: reviewdog/action-brakeman@v1
         with:
