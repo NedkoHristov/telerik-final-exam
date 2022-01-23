@@ -24,7 +24,6 @@ jobs:
           brakeman_version: gemfile
           github_token: ${{ secrets.github_token }}
 
-      - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/ruby@master
         env:
