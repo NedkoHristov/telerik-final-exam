@@ -14,10 +14,10 @@ jobs:
 #          # GITHUB_TOKEN
 #          github_token: ${{ secrets.github_token }}
       - name: reek - code smell detector
-        uses: reviewdog/action-reek@v1
+#        uses: reviewdog/action-reek@v1
+        uses: moneyforward/reek-action@v0
         with:
           reporter: github-check
-          github_token: ${{ secrets.github_token }}
 
       - name: fasterer - suggests some speed improvements
         uses: vk26/action-fasterer@v1
