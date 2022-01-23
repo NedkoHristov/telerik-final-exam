@@ -39,7 +39,7 @@ jobs:
         uses: snyk/actions/ruby@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
+          reporter: github-check
   ci-to-dockerhub:
     needs: vulnerability-scanners
     runs-on: ubuntu-latest
