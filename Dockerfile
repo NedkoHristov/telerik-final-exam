@@ -23,4 +23,6 @@ COPY . /usr/scr/app
 
 CMD ["ruby", "./tcp_server.rb"]
 
+RUN echo "Done"
+
 EXPOSE 80/tcp
