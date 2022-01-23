@@ -23,12 +23,14 @@ jobs:
         with:
           brakeman_version: gemfile
           github_token: ${{ secrets.github_token }}
-      - name: Snyk.io - vulnerability scanner
+
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/ruby@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - name: SonarCloud -vulnerability scanner
 
+      - name: SonarCloud -vulnerability scanner
       # - uses: actions/checkout@v2
       #   with:
       #     fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
