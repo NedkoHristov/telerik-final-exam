@@ -86,6 +86,6 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.SSH_SLACK_WEBHOOK }}
         SLACK_CHANNEL: telerik-upskill-devops
-        SLACK_USERNAME: shitBot
+        SLACK_USERNAME: telerikBot
         SLACK_COLOR: ${{ job.status }}
         SLACK_FOOTER: "Telerik's DevOps Upskill challenge"
