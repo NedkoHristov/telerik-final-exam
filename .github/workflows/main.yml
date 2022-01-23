@@ -16,8 +16,9 @@ jobs:
       - name: reek - code smell detector
         uses: reviewdog/action-reek@v1
         with:
-          reek_version: gemfile
+          reporter: github-check
           github_token: ${{ secrets.github_token }}
+
       - name: fasterer - suggests some speed improvements
         uses: vk26/action-fasterer@v1
         with:
