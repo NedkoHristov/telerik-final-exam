@@ -78,7 +78,7 @@ jobs:
         run: echo ${{ steps.docker_build.outputs.digest }}
 
   notifications:
-    needs: build
+    needs: ci-to-dockerhub
     runs-on: ubuntu-latest
     steps:
     - name: Slack Notification
@@ -88,4 +88,4 @@ jobs:
         SLACK_CHANNEL: telerik-upskill-devops
         SLACK_USERNAME: shitBot
         SLACK_COLOR: ${{ job.status }}
-        SLACK_FOOTER: "You better not know who wrote this :D"
+        SLACK_FOOTER: "Telerik's DevOps Upskill challenge"
