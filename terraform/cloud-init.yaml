@@ -25,6 +25,7 @@ runcmd:
   - sudo apt install -y docker.io
   - sudo systemctl start docker
   - sudo systemctl enable docker
+  - curl -sSL https://repos.insights.digitalocean.com/install.sh | sudo bash
   # TODO - keep docker alive
   # Add new relic agent
   - docker run -d \--name newrelic-infra \--network=host \--cap-add=SYS_PTRACE \--privileged \--pid=host \-v "/:/host:ro" \-v "/var/run/docker.sock:/var/run/docker.sock" \-e NRIA_LICENSE_KEY=eu01xxa37b0ac4f4b333f4e102b576fb4499NRAL \newrelic/infrastructure:latest
