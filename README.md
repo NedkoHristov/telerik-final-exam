@@ -14,10 +14,10 @@ For this repo I'm using Feature Branching/GitHub flow strategy, because:
 ## GitHub Actions
 
 The trigger of the GitHub Actions is pushing a code to the `main` branch. Then number of actions are started:
-* Linter (rubocop);
-* Vulnerability scanners (brakeman, Snyk);
-* Static Application Security Testing - SonarCloud
-* Notifications via Slack
+* Linter (`rubocop`);
+* Vulnerability scanners (`brakeman`, `Snyk`);
+* Static Application Security Testing - `SonarCloud`
+* Notifications via `Slack`
 * Build Docker image and push it to Docker Hub
 
 When triggered the first three steps are running simultaneously and building the docker image and slack notification starts when the first are completed successfully.
