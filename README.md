@@ -11,6 +11,9 @@ For this repo I'm using Feature Branching/GitHub flow strategy, because:
 * Fast feedback loops for the CI part;
 * Minimal number of branches (ideally one working branch at a time) to avoid merge conflicts.
 
+## GitHub project
+For a basic project management I used [GitHub Project](https://github.com/users/NedkoHristov/projects/1/views/1).
+
 ## GitHub Actions
 
 The trigger of the GitHub Actions is pushing a code to the `main` branch. Then number of actions are started:
