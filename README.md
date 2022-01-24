@@ -89,6 +89,12 @@ Repo security is done mostly by:
 * `brakeman` is running as a scheduled action everyday @ `0300`
 * Enabled `dependabot security updates` and `dependabot alerts`;
 
+## Montioring
+
+Monitoring is done trough two systems:
+* Advanced DigitalOcean monitoring system;
+* NewRelic (containers and host monitoring).
+
 ## Future improvements:
 
 * Terraform remote state;
@@ -97,5 +103,5 @@ Repo security is done mostly by:
 * Show Docker container logs for debugging purposes;
 * Host Docker on a DO docker registry and use DO Kubernetes;
 * Automatically update docker image (using bash script, watchtower or webhooks);
-* Use `terraform vault` for secret management
+* Use `terraform vault` for secret management;
 * Protected branches.
