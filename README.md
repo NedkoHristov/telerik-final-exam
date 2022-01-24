@@ -89,7 +89,7 @@ Repo security is done mostly by:
 * `brakeman` is running as a scheduled action everyday @ `0300`
 * Enabled `dependabot security updates` and `dependabot alerts`;
 
-Future improvements:
+## Future improvements:
 
 * Terraform remote state;
 * Use `containerd` (or `systemd unit`) to keep the docker alive when something went wrong (ex OOM);
@@ -98,3 +98,4 @@ Future improvements:
 * Host Docker on a DO docker registry and use DO Kubernetes;
 * Automatically update docker image (using bash script, watchtower or webhooks);
 * Use `terraform vault` for secret management
+* Protected branches, but ...
