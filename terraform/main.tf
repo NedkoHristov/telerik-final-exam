@@ -27,7 +27,7 @@ resource "digitalocean_droplet" "telerik-ruby" {
   connection {
       host     = self.ipv4_address
       type     = "ssh"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = file("~/.ssh/do-tf")
       user     = "root"
       timeout  = "2m"
     }
