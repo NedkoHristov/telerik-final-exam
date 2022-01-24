@@ -20,7 +20,7 @@ resource "digitalocean_droplet" "telerik-ruby" {
   backups            = false
   ipv6               = true
   name               = "telerik-ruby"
-  user_data          = file("cloudinit.conf")
+  user_data          = file("cloud-init.yaml")
 
   connection {
       host     = self.ipv4_address
