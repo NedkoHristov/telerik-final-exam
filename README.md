@@ -7,13 +7,13 @@ This repo contains a workflow that combines GitHub Actions, Docker and terraform
 ## Branching strategy
 For this repo I'm using Feature Branching/GitHub flow strategy, because:
 * Features that are introduced are very small and self sufficient;
-* I want to keep close to the master branch;
+* I want to keep close to the `main`` branch;
 * Fast feedback loops for the CI part;
 * Minimal number of branches (ideally one working branch at a time) to avoid merge conflicts.
 
 ## GitHub Actions
 
-The trigger of the GitHub Actions is pushing a code to the master branch. Then number of actions are started:
+The trigger of the GitHub Actions is pushing a code to the `main` branch. Then number of actions are started:
 * Linter (rubocop);
 * Vulnerability scanners (brakeman, Snyk);
 * Static Application Security Testing - SonarCloud
@@ -44,18 +44,33 @@ REPOSITORY              TAG       IMAGE ID       CREATED              SIZE
 
 ## Terraform
 Terraform is a declarative IaC tool that enables easily to deploy infrastructure on more than a 100 providers.
-
 This is a manual step, because deployments don't need to be done on every merge.
 
+Project contains a:
+* Provider (`digitalocean` in this case);
+* Defining the `droplet` (instance) parameters (`instance type`, `region`, `name` as variables in `variables.tf`);
+* User data (in `cloud-init.yaml`)
+* Defining SSH key to connect be able to connect to the instance once created;
+* cloud-init that provision the instance containing:
+    * New group (`hashicorp`) and user (`terraform`), public SSH key;
+    * Series of commands that install docker (and sets the correct permissions), pull the docker image and run it
 
 ## Code
+Very simple http server written in Ruby that responds to a GET request and return a value.
 
+## Repo security
+Repo security is done mostly by:
+* Using secrets for all tokens and usernames;
+* `brakeman` is running as a scheduled action everyday @ `0300`
+* Enabled `dependabot security updates` and `dependabot alerts`;
 
 Future improvements:
 
 Terraform remote state
 Host docker on a docker registry and use DigitalOcean's Kubernetes
 Automatically update docker image (using bash script, watchtower or )
+using terraform valut
+
 
 1. GitHub - code itself, CI, etc
 2. docker files - will be here temporarely before being moved to the terraform part
