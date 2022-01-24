@@ -3,7 +3,7 @@
 require 'socket'
 
 app = proc do
-  ['200', { 'Content-Type' => 'text/html' }, ['Hello world.']]
+  ['200', { 'Content-Type' => 'text/html' }, ["Hello world.\n"]]
 end
 
 server = TCPServer.new 80

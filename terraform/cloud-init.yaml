@@ -11,18 +11,23 @@ users:
     shell: /bin/bash
     primary_group: hashicorp
     sudo: ALL=(ALL) NOPASSWD:ALL
-    groups: users, admin
+    groups: users, admin, docker
     lock_passwd: false
     ssh_authorized_keys:
-      - # Paste your created SSH key here
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDbOOS7t95cU2mjlK7nOewgVv2VSGSdxslE1KmSB4wlM36Ou4pSVPh9/bK0wmapSNt+uMlki5Fq2qIUQ96K8HDhgjP5LTlgPFdlJ+XbYgojYWty0paLV3UtyoCPEjPCxQ25qNC0arkaspa5qFo2cS4LJuLYOSRsFoNYAllmaD63zXUXxG+RvFtaI51hJfF4yVI04ViZQ7zBFeKD8egSOKX2ciZCgVGCqJRzKepuvnyGLPC5dcBCP6q9Direi5DZmKVOEOZqRNCrzTLQ+pjOiV5eecUDToJ09jbUzGpSo2uJJ7QcoCm9UWFderZvKAr0debfrEWPPlVzIMsNortOIwpFanfZUR+m8WPxRRrBU3vSe3MggkXtzhU/uOn9SAO668ybLTBA4hEQq/KuDY+Sh7nDfwIrdlbVygZiD92SlOR/Kh2d/ajxc0Xv3yrU/Ab+quP7JnQkMjWpVGalKLz+8cpVMravxYKzfw01gwItVQ2kSyGP4UxO/bqkpudtVD1e6V8= nedelcho.hristov2001@gmail.com
 
 runcmd:
+  # Prepare the instance installing docker
   - sudo apt-get update
-  - sudo apt-get -y install git unzip ruby
+  # Remove git and ruby packages
+  #  - sudo apt-get -y install git unzip ruby
   - sudo apt-get remove docker docker-engine docker.io
   - sudo apt install -y docker.io
   - sudo systemctl start docker
   - sudo systemctl enable docker
-  - sudo chmod 666 /var/run/docker.sock
-  - docker run --rm -p 80:80 nedko/tcp_server:latest
+  # TODO - keep docker alive
+  # Add new relic agent
+  - docker run -d \--name newrelic-infra \--network=host \--cap-add=SYS_PTRACE \--privileged \--pid=host \-v "/:/host:ro" \-v "/var/run/docker.sock:/var/run/docker.sock" \-e NRIA_LICENSE_KEY=eu01xxa37b0ac4f4b333f4e102b576fb4499NRAL \newrelic/infrastructure:latest
+  # Pull and run custom docker image
   - docker pull nedko/tcp_server:latest
+  - docker run --rm -p 80:80 nedko/tcp_server:latest

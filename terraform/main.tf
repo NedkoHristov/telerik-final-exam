@@ -11,7 +11,7 @@ terraform {
 
 provider "digitalocean" {
 # DigitalOcean token, base64 encoded
-  DIGINOTOCEAN_TOKEN = "SnVzdCBraWRkaW5nLCBEYW5p"
+#  DIGINOTOCEAN_TOKEN = "SnVzdCBraWRkaW5nLCBEYW5p"
 }
 
 resource "digitalocean_droplet" "telerik-ruby" {
