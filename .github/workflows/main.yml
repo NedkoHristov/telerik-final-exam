@@ -14,7 +14,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   vulnerability-scanners:
-#    needs: linters
     name: Vulnerability scanners
     runs-on: ubuntu-latest
     steps:
@@ -24,11 +23,6 @@ jobs:
           brakeman_version: gemfile
           github_token: ${{ secrets.github_token }}
 
-      # - name: Run Snyk to check for vulnerabilities
-      #   uses: snyk/actions/ruby@master
-      #   env:
-      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         env:
@@ -37,7 +31,6 @@ jobs:
           image: ${{ secrets.DOCKER_USER }}/tcp_server:latest
 
   SAST:
-#    needs: vulnerability-scanners
     name: Static application security testing
     runs-on: ubuntu-latest
     steps:
