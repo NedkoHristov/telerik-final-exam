@@ -34,7 +34,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/app:latest
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/tcp_server:latest
 
   SAST:
 #    needs: vulnerability-scanners
