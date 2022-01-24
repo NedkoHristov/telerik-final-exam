@@ -105,3 +105,33 @@ Monitoring is done trough two systems:
 * Automatically update docker image (using bash script, watchtower or webhooks);
 * Use `terraform vault` for secret management;
 * Protected branches.
+
+
+## Demo walkthrough
+
+* Documentation
+* Walk around the GitHub Actions and Docker code
+* Show secrets and GitHub repo based security settings
+* Create new branch and commit something, make a PR
+* Show the GitHub Actions workflows
+* Show SonarCloud results
+* Show the NewRelic and DigitalOcean metrics
+* Show Docker Hub
+* Show slack notification
+* Walk around the terraform code
+* terraform plan
+
+* `curl` the instance
+
+* Commit/Merge changes on the Ruby code
+	* Demo the workflow again
+	* From the instance - get new version of the docker image and run it
+	* Demo the changes deployed
+
+```
+docker ps
+docker stop INSTANCE-ID
+docker pull nedko/tcp_server:latest
+docker run --rm -d -p 80:80 nedko/tcp_server:latest
+curl localhost
+```
