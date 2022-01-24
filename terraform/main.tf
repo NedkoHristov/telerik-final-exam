@@ -9,7 +9,10 @@ terraform {
   }
 }
 
-provider "digitalocean" {}
+provider "digitalocean" {
+# DigitalOcean token, base64 encoded
+  DIGINOTOCEAN_TOKEN = "SnVzdCBraWRkaW5nLCBEYW5p"
+}
 
 resource "digitalocean_droplet" "telerik-ruby" {
   # Obtain your ssh_key id number via your account. See Document https://developers.digitalocean.com/documentation/v2/#list-all-keys
