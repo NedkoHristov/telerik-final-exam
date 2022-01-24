@@ -3,7 +3,7 @@ name: linters
 on: [push]
 jobs:
   linters:
-    name: runner / linters
+    name: Linter
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -14,8 +14,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   vulnerability-scanners:
-#    needs: linters
-    name: Vulnerability scanners
+    name: Vulnerability scanning
     runs-on: ubuntu-latest
     steps:
       - name: brakeman - vulnerability scanning
@@ -24,13 +23,14 @@ jobs:
           brakeman_version: gemfile
           github_token: ${{ secrets.github_token }}
 
-      # - name: Run Snyk to check for vulnerabilities
-      #   uses: snyk/actions/ruby@master
-      #   env:
-      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Run Snyk to check Docker image for vulnerabilities
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: ${{ secrets.DOCKER_USER }}/tcp_server:latest
 
   SAST:
-#    needs: vulnerability-scanners
     name: Static application security testing
     runs-on: ubuntu-latest
     steps:
@@ -44,7 +44,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
-  notifications: #Placed here, because all tests has been already done, no need to wait anymore
+  Notifications: #Placed here, because all tests has been already done, no need to wait anymore
     needs: [linters, vulnerability-scanners, SAST]
     runs-on: ubuntu-latest
     steps:
