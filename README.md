@@ -5,7 +5,7 @@
 This repo contains a workflow that combines GitHub Actions, Docker and terraform. Main purpose is repo is demonstrating the capabilities of the three technologies combined with a branching strategy and a pinch of security.
 
 ## Workflow graph
-
+```
 ┌──────── GitHub                       GitHub actions    ────────────────────►      Terraform
 │           │                                │                                          │
 │           │                                │                                          │
@@ -24,7 +24,7 @@ This repo contains a workflow that combines GitHub Actions, Docker and terraform
                        │                     ▼                                  Run docker image
                        └────────►   Publish docker image                            serve @ :80
                                         on DockerHub
-
+```
 
 ## Branching strategy
 For this repo I'm using Feature Branching/GitHub flow strategy, because:
