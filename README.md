@@ -22,7 +22,40 @@ The trigger of the GitHub Actions is pushing a code to the master branch. Then n
 
 When triggered the first three steps are running simultaneously and building the docker image and slack notification starts when the first are completed successfully.
 
-The repo contains three main points:
+I tested the execution times and if we're running the all steps waiting for each other vs running the first three simultaneously the time improvement is nearly a minute.
+
+Building a docker image and publishing on a public DockerHub repo is done using [Moby BuildKit](https://github.com/moby/buildkit) which includes caching.
+
+## Docker
+
+Dockerfile had it's evolution from a pre-baked image (ruby.2.6) to using alpine. The size and compilation times are gigantic.
+
+The optimisation is easy and contains next steps:
+* Use linux `alpine`;
+* Use `apk` package manager to install some basic packages (as `bash`, `build-base`, `curl-dev`) and `ruby`;
+* Delete the `apk` cache.
+
+Results:
+```
+REPOSITORY              TAG       IMAGE ID       CREATED              SIZE
+(pre-baked) tcp_server              v0.2        21215c31dd1e   40 seconds ago       819MB
+(alpine)   tcp_server              v0.1        39cec07d698f   About a minute ago   253MB
+```
+
+## Terraform
+Terraform is a declarative IaC tool that enables easily to deploy infrastructure on more than a 100 providers.
+
+This is a manual step, because deployments don't need to be done on every merge.
+
+
+## Code
+
+
+Future improvements:
+
+Terraform remote state
+Host docker on a docker registry and use DigitalOcean's Kubernetes
+Automatically update docker image (using bash script, watchtower or )
 
 1. GitHub - code itself, CI, etc
 2. docker files - will be here temporarely before being moved to the terraform part
