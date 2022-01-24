@@ -66,30 +66,8 @@ Repo security is done mostly by:
 
 Future improvements:
 
-Terraform remote state
-Host docker on a docker registry and use DigitalOcean's Kubernetes
-Automatically update docker image (using bash script, watchtower or )
-using terraform valut
-
-
-1. GitHub - code itself, CI, etc
-2. docker files - will be here temporarely before being moved to the terraform part
-
-Create a docker image that runs a ruby script:
-```
-docker build -t tcp_server .
-```
-
-Run the container and expose port 80:
-```
-docker run -i -t -p 80:80 tcp_server:latest
-```
-Room for improvement:
-* Implementing volume may be a good idea for the demo purpose, because creating and uploading docker images may take some time
-
-3. terraform to create the infrastructure
-* Prerequisites to run terraform:
-You need to export you DigitalOcean API Token as an environment variable
-```
-export DIGITALOCEAN_TOKEN="Put Your Token Here"
-```
+* Terraform remote state;
+* use containerd (or systemd unit) to keep the docker alive when something went wrong (ex OOM);
+* Host Docker on a DO docker registry and use DO Kubernetes;
+* Automatically update docker image (using bash script, watchtower or webhooks);
+* Use `terraform vault` for secret management
