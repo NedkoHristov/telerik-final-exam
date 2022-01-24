@@ -4,6 +4,28 @@
 
 This repo contains a workflow that combines GitHub Actions, Docker and terraform. Main purpose is repo is demonstrating the capabilities of the three technologies combined with a branching strategy and a pinch of security.
 
+## Workflow graph
+
+┌──────── GitHub                       GitHub actions    ────────────────────►      Terraform
+│           │                                │                                          │
+│           │                                │                                          │
+│           ▼                                │                                          │
+│                                            ▼                                          ▼
+│     Commit in branch ────────┬───────►  inters                                  Create VM in DO
+│                              │             │                                          │
+│                              │             │                                          │
+│                              │             │                                          │
+│                              │             ▼                                          ▼
+└────► Push to master  ┌───────┴──►  Build Docker image                         Pull docker image
+                       │           (if pushed to `main`)                          from DockerHub
+                       │                     │                                          │
+                       │                     │                                          │
+                       │                     │                                          ▼
+                       │                     ▼                                  Run docker image
+                       └────────►   Publish docker image                            serve @ :80
+                                        on DockerHub
+
+
 ## Branching strategy
 For this repo I'm using Feature Branching/GitHub flow strategy, because:
 * Features that are introduced are very small and self sufficient;
