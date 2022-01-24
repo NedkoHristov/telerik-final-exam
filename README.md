@@ -89,7 +89,7 @@ Repo security is done mostly by:
 * `brakeman` is running as a scheduled action everyday @ `0300`
 * Enabled `dependabot security updates` and `dependabot alerts`;
 
-## Montioring
+## Observability
 
 Monitoring is done trough two systems:
 * Advanced DigitalOcean monitoring system;
