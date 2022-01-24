@@ -19,7 +19,6 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-# COPY . /usr/scr/app
 
 COPY . .
 

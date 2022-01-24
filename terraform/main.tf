@@ -1,17 +1,15 @@
 terraform {
+  required_version = ">= 1.0.0"
+
   required_providers {
     digitalocean = {
-      source = "digitalocean/digitalocean"
-      version = ">= 2.8.0"
+      source  = "digitalocean/digitalocean"
+      version = "~> 2.17"
     }
   }
 }
 
-provider "digitalocean" {
-  # You need to set this in your .bashrc
-  # export DIGITALOCEAN_TOKEN="Your API TOKEN"
-  #
-}
+provider "digitalocean" {}
 
 resource "digitalocean_droplet" "telerik-ruby" {
   # Obtain your ssh_key id number via your account. See Document https://developers.digitalocean.com/documentation/v2/#list-all-keys
