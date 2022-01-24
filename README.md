@@ -98,4 +98,4 @@ Repo security is done mostly by:
 * Host Docker on a DO docker registry and use DO Kubernetes;
 * Automatically update docker image (using bash script, watchtower or webhooks);
 * Use `terraform vault` for secret management
-* Protected branches, but ...
+* Protected branches.
