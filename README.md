@@ -1,6 +1,26 @@
 # Telerik DevOps upskill final exam
 
-This repo contains the final exam for the DevOps upskill course.
+# TL;DR
+
+This repo contains a workflow that combines GitHub Actions, Docker and terraform. Main purpose is repo is demonstrating the capabilities of the three technologies combined with a branching strategy and a pinch of security.
+
+## Branching strategy
+For this repo I'm using Feature Branching/GitHub flow strategy, because:
+* Features that are introduced are very small and self sufficient;
+* I want to keep close to the master branch;
+* Fast feedback loops for the CI part;
+* Minimal number of branches (ideally one working branch at a time) to avoid merge conflicts.
+
+## GitHub Actions
+
+The trigger of the GitHub Actions is pushing a code to the master branch. Then number of actions are started:
+* Linter (rubocop);
+* Vulnerability scanners (brakeman, Snyk);
+* Static Application Security Testing - SonarCloud
+* Notifications via Slack
+* Build Docker image and push it to Docker Hub
+
+When triggered the first three steps are running simultaneously and building the docker image and slack notification starts when the first are completed successfully.
 
 The repo contains three main points:
 
