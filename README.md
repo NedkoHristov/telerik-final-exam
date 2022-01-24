@@ -29,7 +29,7 @@ This repo contains a workflow that combines GitHub Actions, Docker and terraform
 ## Branching strategy
 For this repo I'm using Feature Branching/GitHub flow strategy, because:
 * Features that are introduced are very small and self sufficient;
-* I want to keep close to the `main`` branch;
+* I want to keep close to the `main` branch;
 * Fast feedback loops for the CI part;
 * Minimal number of branches (ideally one working branch at a time) to avoid merge conflicts.
 
@@ -47,7 +47,7 @@ The trigger of the GitHub Actions is pushing a code to the `main` branch. Then n
 
 When triggered the first three steps are running simultaneously and building the docker image and slack notification starts when the first are completed successfully.
 
-I tested the execution times and if we're running the all steps waiting for each other vs running the first three simultaneously the time improvement is nearly a minute.
+I tested the execution times and if we're running the all steps waiting for each other vs running the first three simultaneously **the time improvement is nearly a minute**.
 
 Building a docker image and publishing on a public DockerHub repo is done using [Moby BuildKit](https://github.com/moby/buildkit) which includes caching.
 
@@ -64,7 +64,7 @@ Results:
 ```
 REPOSITORY              TAG       IMAGE ID       CREATED              SIZE
 (pre-baked) tcp_server              v0.2        21215c31dd1e   40 seconds ago       819MB
-(alpine)   tcp_server              v0.1        39cec07d698f   About a minute ago   253MB
+(alpine)    tcp_server              v0.1        39cec07d698f   About a minute ago   253MB
 ```
 
 ## Terraform
