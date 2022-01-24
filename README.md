@@ -67,7 +67,10 @@ Repo security is done mostly by:
 Future improvements:
 
 * Terraform remote state;
-* use containerd (or systemd unit) to keep the docker alive when something went wrong (ex OOM);
+* Use containerd (or systemd unit) to keep the docker alive when something went wrong (ex OOM);
+* Docker image versioning;
+* Show docker container logs for debugging purposes;
+
 * Host Docker on a DO docker registry and use DO Kubernetes;
 * Automatically update docker image (using bash script, watchtower or webhooks);
 * Use `terraform vault` for secret management
