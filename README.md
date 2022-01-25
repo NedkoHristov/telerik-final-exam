@@ -106,6 +106,8 @@ Monitoring is done trough two systems:
 * Use `terraform vault` for secret management;
 * Protected branches.
 
+## Feature workflow improvments
+Trigger github action on new issue, build docker with  and scan it
 
 ## Demo walkthrough
 
