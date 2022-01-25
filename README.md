@@ -105,6 +105,7 @@ Monitoring is done trough two systems:
 * Automatically update docker image (using bash script, watchtower or webhooks);
 * Use `terraform vault` for secret management;
 * Protected branches.
+* Use Git Semantic Version action to tag versions automatically
 
 ## Feature workflow improvments
 Trigger github action on new issue, build docker with  and scan it
