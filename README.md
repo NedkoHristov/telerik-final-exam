@@ -106,6 +106,8 @@ Monitoring is done trough two systems:
 * Use `terraform vault` for secret management;
 * Protected branches.
 * Use Git Semantic Version action to tag versions automatically
+* Test the glorious webserver on multiple ruby versions and OS
+* Implement ArgoCD
 
 ## Feature workflow improvments
 Trigger github action on new issue, build docker with  and scan it
