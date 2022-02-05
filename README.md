@@ -110,8 +110,8 @@ Monitoring is done trough two systems:
 * Implement ArgoCD
 * Implement terraform plan as artefact and then use it to tf apply
 
-## Feature workflow improvments
-Trigger github action on new issue, build docker with  and scan it (with ArgoCD
+## Feature workflow improvements
+Trigger github action on new issue, build docker with  and scan it (with ArgoCD)
 
 ## Demo walkthrough
 
