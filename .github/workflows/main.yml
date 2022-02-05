@@ -14,21 +14,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   vulnerability-scanners:
-    name: Vulnerability scanning
-    runs-on: ubuntu-latest
-    steps:
-      - name: brakeman - vulnerability scanning
-        uses: reviewdog/action-brakeman@v1
-        with:
-          brakeman_version: gemfile
-          github_token: ${{ secrets.github_token }}
+    # name: Vulnerability scanning
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: brakeman - vulnerability scanning
+    #     uses: reviewdog/action-brakeman@v1
+    #     with:
+    #       brakeman_version: gemfile
+    #       github_token: ${{ secrets.github_token }}
 
-      - name: Run Snyk to check Docker image for vulnerabilities
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          image: ${{ secrets.DOCKER_USER }}/tcp_server:latest
+    #   - name: Run Snyk to check Docker image for vulnerabilities
+    #     uses: snyk/actions/docker@master
+    #     env:
+    #       SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+    #     with:
+    #       image: ${{ secrets.DOCKER_USER }}/tcp_server:latest
 
   snyk:
     runs-on: ubuntu-latest
