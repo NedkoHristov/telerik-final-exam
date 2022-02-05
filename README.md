@@ -147,5 +147,5 @@ curl localhost
 
 Changes that are worth mentioning no matter that the exam is passed
 
-* In the previous implementation SNYK tested the uploaded image BEFORE I upload it so it was scanning the previous successful build. Now we're building the docker image while running the SNYK. The performance is the same (42 vs 41 secs)
+* In the previous implementation SNYK tested the uploaded image BEFORE I upload it so it was scanning the previous successful build. Now we're building the docker image while running the SNYK. As a side effect there's even a small performance gain (42 sec for the previous method vs 33 secounds now). Who said we can't be in a win-win situation here? 
 
