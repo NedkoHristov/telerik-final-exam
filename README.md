@@ -106,7 +106,7 @@ Monitoring is done trough two systems:
 * Use `terraform vault` for secret management;
 * Protected branches.
 * Use Git Semantic Version action to tag versions automatically
-* Test the glorious webserver on multiple ruby versions and OS
+* Test the glorious webserver on multiple Ruby versions and OS
 * Implement ArgoCD
 * Implement terraform plan as artefact and then use it to tf apply
 
