@@ -14,6 +14,7 @@ ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler
 # At the end, remove the apk cache
 RUN apk update && \
     apk upgrade && \
+    apk add --update --no-cache gmp gmp-dev && \
     apk add $BUILD_PACKAGES && \
     apk add $RUBY_PACKAGES && \
     rm -rf /var/cache/apk/*
