@@ -13,7 +13,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  vulnerability-scanners:
+  # vulnerability-scanners:
     # name: Vulnerability scanning
     # runs-on: ubuntu-latest
     # steps:
