@@ -106,12 +106,12 @@ Monitoring is done trough two systems:
 * Use `terraform vault` for secret management;
 * Protected branches.
 * Use Git Semantic Version action to tag versions automatically
-* Test the glorious webserver on multiple ruby versions and OS
+* Test the glorious webserver on multiple Ruby versions and OS
 * Implement ArgoCD
 * Implement terraform plan as artefact and then use it to tf apply
 
-## Feature workflow improvments
-Trigger github action on new issue, build docker with  and scan it (with ArgoCD
+## Feature workflow improvements
+Trigger github action on new issue, build docker with  and scan it (with ArgoCD)
 
 ## Demo walkthrough
 
@@ -141,3 +141,11 @@ docker pull nedko/tcp_server:latest
 docker run --rm -d -p 80:80 nedko/tcp_server:latest
 curl localhost
 ```
+
+
+## Changelog
+
+Changes that are worth mentioning no matter that the exam is passed
+
+* In the previous implementation SNYK tested the uploaded image BEFORE I upload it so it was scanning the previous successful build. Now we're building the docker image while running the SNYK. As a side effect there's even a small performance gain (42 sec for the previous method vs 33 secounds now). Who said we can't be in a win-win situation here? 
+* `actions/checkout` now fetch ALL branches (uses `fetch-depth: 0`). Let's fetch only `main` branch.
