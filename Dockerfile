@@ -18,6 +18,7 @@ RUN apk update && \
     apk add $RUBY_PACKAGES && \
     rm -rf /var/cache/apk/*
 RUN mkdir -p /usr/src/app
+RUN ruby --version
 WORKDIR /usr/src/app
 
 COPY . .
