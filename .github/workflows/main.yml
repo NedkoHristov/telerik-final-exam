@@ -46,7 +46,7 @@ jobs:
       with:
         image: tcp_server
         args: --file=Dockerfile
-    - uses: github/codeql-action/upload-sarif@v1
+    - uses: github/codeql-action/upload-sarif@v1 # (more info here https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github)
       with:
         sarif_file: snyk.sarif
 
