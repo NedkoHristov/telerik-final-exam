@@ -1,0 +1,1 @@
+This is just a test file to find out is my local git configured correctly.
