@@ -15,3 +15,16 @@ variable "ssh_key_path" {
   description = "The file path to an ssh public key"
   default     = "~/.ssh/do-tf.pub"
 }
+
+variable "ssh_public_key" {
+  type        = string
+  description = "SSH public key content for terraform user"
+  sensitive   = true
+}
+
+variable "newrelic_license_key" {
+  type        = string
+  description = "New Relic license key for infrastructure monitoring"
+  sensitive   = true
+  default     = ""
+}

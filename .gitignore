@@ -38,3 +38,8 @@ terraform.rc
 # Other terraform related files that needs to be ignored
 *.tfplan
 *.hcl
+
+# Sensitive configuration files
+secrets.tfvars
+*.auto.tfvars
+terraform.tfvars

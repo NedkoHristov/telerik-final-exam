@@ -23,7 +23,10 @@ resource "digitalocean_droplet" "telerik-ruby" {
   backups            = false
   ipv6               = true
   name               = "telerik-ruby"
-  user_data          = file("cloud-init.yaml")
+  user_data          = templatefile("cloud-init.yaml", {
+    ssh_public_key       = var.ssh_public_key
+    newrelic_license_key = var.newrelic_license_key
+  })
 
   connection {
       host     = self.ipv4_address
